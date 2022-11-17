@@ -2,14 +2,14 @@
 # RUST: Quick reference for programmers
 
 ## Common Collections
-##### Arrays are assigned on stack, and are immutable
+* ##### Arrays are assigned on stack, and are immutable
 
 ```rust
 let a:[i32;_] = [1,2,3];
 ```
 
 
-##### Vectors are assigned on heap, and are mutable. There are 2 methods to create a vector, normal and using macros:
+* ##### Vectors are assigned on heap, and are mutable. There are 2 methods to create a vector, normal and using macros:
 
 ```rust
 // Normal Syntax
