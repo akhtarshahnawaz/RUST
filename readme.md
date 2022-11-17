@@ -4,7 +4,8 @@
 ## Common Collections
 
 Arrays can be defined as
-'''rust
+
+```rust
 let a:[i32;_] = [1,2,3]
-let v: vec<i32> = vec.new()
-'''
+let v: vec<i32> = vec.new()```
+
