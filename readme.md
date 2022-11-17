@@ -76,3 +76,33 @@ struct Point {
 let point: Point = Point { x: 10.3, y: 0.4 };
 ```
 ## Ownership
+Some Basics:
+* There are mainly 3 types of memory management models: Manual, Ownership Model, Garbage Collection
+* Stack is fixed size, can't grow or shrink, holds also stack frames (functions that hold local variables whose size are computed at compile time). 
+* Variables live as long as stack frame lives.
+* Heaps are dynamic in size, can grow and shrink, and we can control lifetime of data.
+* Pushing to stack is faster than allocating to heap because system needs to find and allocate empty space where to store on heap.
+
+There are three rules for memory management in Rust:
+* Each value has a variable called its owner
+* There can only be one owner at a time
+* When owner goes out of scope, value is dropped
+Scopes can be prescibed also using curly braces `{}`
+
+There are few things to remember to keep track of ownership:
+* Allocating a stack variable to another variable `x = y` will copy the variable
+* Allocating a heap variable to another variable `x = y` will move the variable i.e. y is invalidated & moved to x
+* To copy variables on residing on heap, we can use clone as ` x = y.clone()`
+* Passing a heap variable to a function will move it as local variable inside function, and actual variable will be invalidated. To avoid that, you can apss a reference to the variable using `&variable`.  Reference will point to actual variable that will point to data.
+* References are immutable  by default, so we cannot modify the value inside the function. To modify the value, you need to make the variable mutable, then pass a mutable reference using `&mut`
+* You can only have one mutable reference to a piece of data in a praticular scope (to prevent data races).
+* You cannot have mutable reference if immutable reference already exists.
+* Remember that references must always be valid, and at any given time, you can either have one mutable reference or any number of immutable references.
+* Scope of a variable starts when it is introduced for first time, and ends when it is used for last time. Therefore, its okay if mutable reference is used after scope of immutable reference ends.
+
+Few things about Slices:
+* Can be used on strings or arrays
+* They refer to a subset of contiguous data `&s[0..5]`
+* Slices don't take ownership
+* Slice of a  `String` is a sting literal `&str`
+
