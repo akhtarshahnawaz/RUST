@@ -46,3 +46,10 @@ for i in &mut v{
 
 ##### Hashmaps are key:value store, and need to be imported from `std::collections::Hashmap`. Values in a hashmap can be changed similar to vectors by first getting a mutable reference using `&mut` and then changing the value by dereference operator.
 
+
+## Structs
+* Structs are just like dictionaries
+* **Tuple Structs** don't have keys, and are used to group variables as logic units. Elements of tuple structs are accessed using `tuple_struct.index`  syntax.
+* Implementing `Display` trait on struct can help to print structs directly. Otherwise you would need to use `{:?}` format string and derive the debug macro using `#[derive(Debug)]`
+* Structs can have **associated functions** which unlike methods aren't tied to specific instance of the struct. To define associated function, you skip passing the `self` argument.
+ 
