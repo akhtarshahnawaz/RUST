@@ -14,4 +14,4 @@ Vectors are assigned on heap, and are mutable
 ```rust
 let v: vec<i32> = vec.new();
 ```
-Elements of a vectors can be accessed using `&v[index]$`{rust}. However using `v.get()$`{rust} is safer and prevents conditions like out of bound error.
+Elements of a vectors can be accessed using `&v[index]$`{rust}. However using {rust}`v.get(index)$` is safer and prevents conditions like out of bound error.
