@@ -62,9 +62,17 @@ contacts.insert("Ashley", "645-7689");
  // A tuple struct
 struct Pair(i32, f32);
 
+// Instantiate a tuple struct
+let pair = Pair(1, 0.1);
+
+
 // A struct with two fields
 struct Point {
     x: f32,
     y: f32,
 }
+
+// Instantiate a `Point`
+let point: Point = Point { x: 10.3, y: 0.4 };
 ```
+## Ownership
