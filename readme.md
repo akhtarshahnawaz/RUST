@@ -140,8 +140,33 @@ let localhost:IpAddrKind = IpAddrKind::V4(String::from("192.168.1.1"))
 ```
 
 * **Option ENUM:** Rust doesn't have  `Null` types, so we use `Option` enum to handle values which could be empty
+ ```rust
+ // Behind the scene, `Option` ENUM is defined like this
+ enum Option <T>{
+ Some(T),
+ None
+ }
+ 
+ // We can use `Option` ENUM like this
+ let some_number = Some(5); // Type will be inferred automatically
+ let some_string = Some("a string"); // Type will be inferred automatically
+ let absent_number: Option<i32> = None; // Type need to be declared in case on None
+ 
+ // If you have an `Option` ENUM, you can call `.unwrap_or()` method with default value to handle `None` case
+ // Following statement will return 0 incase the value is `None`
+ some_number.unwrap_or(default: 0); 
+```
+## Pattern Matching and Pattern Matching with Option ENUM
+```rust
+// Running `match` on `ENUM` must be exhaustive, i.e. we must match all cases or use `_` for default cases
+match coin{
+coin:Penny =>1,
+coin:Dime=>10,
+_=>0
+}
+```
 
-## Pattern Matching and Error Handling
+## Error Handling
 
 ## Generic Types
 ## OOPS, Traits and Impl
