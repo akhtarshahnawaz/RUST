@@ -32,6 +32,24 @@ Few things about Slices:
 * Slice of a  `String` is a sting literal `&str`
 ##  Lifetimes
 
+Usually Rust uses borrow checkers at compile time to check there are no dangling pointers but in complex cases we need to assist Rust by providing generic lifetime annotations, for example
+* `&i32` is a reference
+* `&'a i32` is a reference with lifetime a
+* `&'a mut i32` mutable reference with lifetime a
+* `fq funtion_name <'a>` function with lifetime a
+
+```rust
+// The lifetime of return value is min(lifetime of a, lifetime of b)
+fn function_name <'a> (x:&'a str, y: &'a str)->&'a str{
+...
+}
+```
+
+Some things to keep in mind while dealing with lifetimes of a function output
+* Each parameter that is a reference gets its own lifetime
+* If there is only one input lifetime parameter, that lifetime is assigned to all output lifetime parameters
+* If there are multiple input lifetime parameters, but one of them is `&self` or `&mut self`, lifetime of self is assigned to all output lifetime params
+
 ## Common Collections
 
 ##### Strings in Rust comes in two varities: `String` and `&str`.
