@@ -139,7 +139,7 @@ V4(String), V6(String)
 let localhost:IpAddrKind = IpAddrKind::V4(String::from("192.168.1.1"))
 ```
 
-* ** Option ENUM: ** Rust doesn't have  `Null` types, so we use `Option` enum to handle values which could be empty
+* **Option ENUM:** Rust doesn't have  `Null` types, so we use `Option` enum to handle values which could be empty
 
 ## Pattern Matching and Error Handling
 
