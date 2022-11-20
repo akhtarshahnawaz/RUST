@@ -199,6 +199,34 @@ You can either do `match` on returned results, or you can call `.unwrap()`. Unwr
 * Adding `?` at the end is a shortcut for `unwrap`
 
 ## Generic Types
+* Generic type allows you to create functions that can use any datatypes as argument.
+```rust
+// Here we define a function that accept a Vector with element of type T, and return value of type T
+// The type T must implement PartialOrd & Copy trait
+fn get_largest <T: PartialOrd + Copy>(number_list:Vec<T>)-> T {
+ ...
+}
+
+// Here we define a struct with two items x & y, such that x is of type T and y is of type U
+Struct Point<T,U>{
+ x:T,
+ y:U
+}
+
+// Here we define a enum with two items OK & Err, such that OK is of type T and Err is of type E
+enum Result<T,E>{
+ x:T,
+ y:E
+}
+
+// Here we implement a function x for a Struct Point(which contains items with two generic types of U&V) and returns a value of type U
+impl <U,V> Point<U,V>{
+ fn x(&self) -> &U{
+  &self.x
+ }
+}
+
+```
 ## OOPS, Traits and Impl
 ## Advance Traits and Types
 ## Trait Objects
