@@ -157,12 +157,32 @@ let localhost:IpAddrKind = IpAddrKind::V4(String::from("192.168.1.1"))
  some_number.unwrap_or(default: 0); 
 ```
 ## Pattern Matching and Pattern Matching with Option ENUM
+Matching in rust is very similar to `switch-case` statement in other language, with many extra exciting features
+
 ```rust
+// For a simple 
+let number = 13;
+match number {
+    1 => println!("One!"),
+    2 | 3 | 5 | 7 | 11 => println!("This is a prime"),
+    13..=19 => println!("A teen"), // Match an inclusive range
+    _ => println!("Ain't special") // Default Case
+}
+
+// We can use match on ENUMs too
 // Running `match` on `ENUM` must be exhaustive, i.e. we must match all cases or use `_` for default cases
-match coin{
-coin:Penny =>1,
-coin:Dime=>10,
-_=>0
+let value = match coin{
+ coin:Penny =>1,
+ coin:Dime=>10,
+ _=>0
+}
+
+// Match is very frequently used with `Option` ENUM to handle empty case
+fn plus_one(x: Option<i32>)->Option<i32>{
+ match x{
+  None => None,
+  Some(i:i32)=> Some(i+1)
+ }
 }
 ```
 
