@@ -321,12 +321,17 @@ Box <dyn TraitName>
 ## Smart Pointers (RC, ARC, Interior Mutability, Reference Cycles)
 ## Closures & Iterators (Advance Functions and Closures)
 ## Module System
+* **Workspace:** At top level, we have workspace, which are group of projects which have many dependencies in common. You need to configure workspace by configuring/adding members to workspace section in `cargo toml`
+* The structure inside workspace is something like this:
+        `Package`-->`Crates(bin, lib)`-->`Modules`
+* Modules are deined using `mod module_name{}`
+* Modules can referred usign relative apth or absolute path. The absolute path starts from `crate::`, and everything else is added on top of that.
 ## Concurrency
 * Threads can be spawned using `thread.Spawn(||{})` which returns a type on which you can call `.join().unwrap()`. Note that `||{}` is a closure syntax.
 * Channels (to pass data between threads) can be created using MPSC (Multi-Producer Single-Consumer) library, for example `let (tx: , rx: ) = mpsc.channel()`
 * When using `Shared State`, you must use mutex to prevent data race.
 ## Macros (Declarative & Procedural)
-Macros in Rust are provided for meta programming i.e. `(Input is Code) -> `(Output is tranformed Code)`. Some examples of macro in Rust that we use everyday are `println!` and `vec!`
+Macros in Rust are provided for meta programming i.e. `(Input is Code)' -> `(Output is tranformed Code)`. Some examples of macro in Rust that we use everyday are `println!` and `vec!`
 * **Declarative Macros:** Allows to write something similar to a match expression that operates on provided Rust code.
 ```rust
 #[macro_export]
