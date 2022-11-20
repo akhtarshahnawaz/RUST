@@ -301,7 +301,7 @@ fn difference<C: Contains>(container: &C) -> i32 { ... }
 *  **Operator Overloading:** We can implement `Add` trait `(std::ops::Add)` on some struct to make them addable.
 *  Multiple traits can have same method names implemented for same type. In that case you need to call the specific traits explicitly, for example
  ```rust
- \\ On Human type which implements Wizard trait, call fly() method
+ // On Human type which implements Wizard trait, call fly() method
  <Human as Wizard>::fly()
  ```
 
@@ -309,6 +309,14 @@ fn difference<C: Contains>(container: &C) -> i32 { ... }
 * To implement a trait on some predefined type (say i32), we need to wrap it in a Struct and then implement for that struct
 
 ## Trait Objects
+Rust doesn't support classic inheritance, but we can achieve same kind of Polymorphism using Trait Objects. For Example, `draw()` method can be inherited to different shapes in GUI librairy of other language by inheritance, but in Rust, it must be done differently because there is no inheritance.
+
+To achieve inheritance in Rust, we use `dyn` keyword (i.e. dynamic dispatch) to use a trait as trait object. A trait object uses anything that implements that trait.
+```rust
+// Dynamic dipatch must be used in Box Smart Pointer
+Box <dyn TraitName>
+```
+
 ## Smart Pointers, Box Smart Pointer (Deref and Drop Traits)
 ## Smart Pointers (RC, ARC, Interior Mutability, Reference Cycles)
 ## Closures & Iterators (Advance Functions and Closures)
