@@ -271,7 +271,20 @@ fn some_function (t: &(impl Display+Clone), u: &(impl Clone+Debug)) -> (impl Clo
 }
 ```
 
-## Advance Traits and Types
+## Advance Traits (Associated Types, Operator Overloading & Super Trait)
+* **Associated Types:** are placeholders that you can add to your trait and then methods can use that placeholder. This way, we can define trait for some type which is unknown until implementation. Associated types are different from generics in the sense that generics can have multiple concrete type implementations, whereas associated types have only one.
+The use of "Associated types" improves the overall readability of code by moving inner types locally into a trait as output types. Syntax for the trait definition is as follows:
+```rust
+// Without using associated types
+fn difference<A, B, C>(container: &C) -> i32 where
+    C: Contains<A, B> { ... }
+
+// Using associated types
+fn difference<C: Contains>(container: &C) -> i32 { ... }
+```
+*  **Operator Overloading:** We can implement `Add` trait `(std::ops::Add)` on some struct to make them addable.
+
+
 ## Trait Objects
 ## Smart Pointers, Box Smart Pointer (Deref and Drop Traits)
 ## Smart Pointers (RC, ARC, Interior Mutability, Reference Cycles)
