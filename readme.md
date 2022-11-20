@@ -332,8 +332,8 @@ macro_rules! some_name{
 }
 ```
 
-* **Procedural Macro:** Allows to operate on Abstract Syntax Tree of the Rust code it is given. They must be defined in their own crate with custom crate types.
-** Custom Derived
-** Attribute Like
-** Function Like
++ **Procedural Macro:** Allows to operate on Abstract Syntax Tree of the Rust code it is given. They must be defined in their own crate with custom crate types.
+1. Custom Derived
+2. Attribute Like
+3. Function Like
 
