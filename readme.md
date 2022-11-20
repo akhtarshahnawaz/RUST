@@ -323,4 +323,17 @@ Box <dyn TraitName>
 ## Module System
 ## Concurrency
 ## Macros (Declarative & Procedural)
+Macros in Rust are provided for meta programming i.e. `(Input is Code) -> `(Output is tranformed Code)`. Some examples of macro in Rust that we use everyday are `println!` and `vec!`
+* **Declarative Macros:** Allows to write something similar to a match expression that operates on provided Rust code.
+```rust
+#[macro_export]
+macro_rules! some_name{
+ patter_to_match =>{{EMITTED CODE}}
+}
+```
+
+* **Procedural Macro:** Allows to operate on Abstract Syntax Tree of the Rust code it is given. They must be defined in their own crate with custom crate types.
+** Custom Derived
+** Attribute Like
+** Function Like
 
