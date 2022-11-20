@@ -332,8 +332,16 @@ macro_rules! some_name{
 }
 ```
 
-+ **Procedural Macro:** Allows to operate on Abstract Syntax Tree of the Rust code it is given. They must be defined in their own crate with custom crate types.
-1. Custom Derived
-2. Attribute Like
-3. Function Like
++ **Procedural Macro:** Allows to operate on Abstract Syntax Tree of the Rust code it is given. They must be defined in their own crate with custom crate types. They are of 3 types:
+ 1. **Custom Derived:** Works also on Functions
+ 2. **Attribute Like:** Works only on Structs & ENUMs
+ 3. **Function Like:** 
 
+Here is a very high level syntax:
+```macro
+use proc_macro;
+#[some_attribute]
+pub fn some_name(input TokenStream)->TokenStream{
+ ...
+}
+```
