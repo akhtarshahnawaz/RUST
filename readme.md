@@ -199,7 +199,7 @@ You can either do `match` on returned results, or you can call `.unwrap()`. Unwr
 * Adding `?` at the end is a shortcut for `unwrap`
 
 ## Generic Types
-* Generic type allows you to create functions that can use any datatypes as argument.
+Generic type allows you to create functions that can use any datatypes as argument.
 ```rust
 // Here we define a function that accept a Vector with element of type T, and return value of type T
 // The type T must implement PartialOrd & Copy trait
@@ -228,6 +228,44 @@ impl <U,V> Point<U,V>{
 
 ```
 ## OOPS, Traits and Impl
+* Traits are very similar to interfaces in other languages. They prescribe a set of functions that must be implemented for some collection data type.
+```rust
+// Here we define a trait with functions that must be implemented for any Data Type that wants to implement this trait
+// Note: We can either have only function signatures or we can also have default function definitions
+public trait Summary{
+fn Summarize(&self)->String;
+}
+
+// Here we implement Summary trait for NewsArticle  
+impl Summary for NewsArticle{
+ fn Summarize(&self)->String{
+  ..
+ }
+}
+```
+* Trait implementation and use can get very complicated very fast. Here are some examples:
+```rust
+// Implement for Pair Struct (which takes a generic type T), where type T already implements Display and PartialOrder traits
+impl<T: Display + PartialOrder> Pair<T>{
+}
+
+// All the three functions defined below takes two arguments where first argument 't' takes reference to a value of type that implement Display & Clone, and second argument 'u' takes reference to a value of type that implement Clone & Debug, and returns a value of type i32
+// Function 1
+fn some_function <T: Display+Clone, U: Clone+Debug>(t: &T, u: &U) -> i32{
+ ...
+}
+
+// Function 2
+fn some_function <T,U>(t: &T, u: &U) -> i32 where T: Display+Clone, U:Clone+Debug{
+ ...
+}
+
+// Function 3
+fn some_function (t: &(impl Display+Clone), u: &(impl Clone+Debug)) -> i32 where T: Display+Clone, U:Clone+Debug{
+ ...
+}
+```
+
 ## Advance Traits and Types
 ## Trait Objects
 ## Smart Pointers, Box Smart Pointer (Deref and Drop Traits)
