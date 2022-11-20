@@ -318,7 +318,17 @@ Box <dyn TraitName>
 ```
 
 ## Smart Pointers, Box Smart Pointer (Deref and Drop Traits)
+* **Smart Pointers** are pointers with extra capabilities and metadata than a normal pointer. They are usually implemented using structs, and have `deref` and `drop` traits implemented on them. Smart pointers own the data they refer to, unlike references which only refer to them.
+    * **Smart Box Pointer:** Allows to store data on heap, and a pointer to the data on the stack. It is very useful for storing data type for which we don't know size at compile time.
+* **Deref Trait:** Allows to customize behavior of dereferencing operator i.e. `*i`
+* **Drop Train:** Allows you to customize what happens when a value goes out of scope.
+    
 ## Smart Pointers (RC, ARC, Interior Mutability, Reference Cycles)
+* **RC Smart Pointer (Reference Count):** Are used to do python like reference count type memory management. Remember that they aren't thread safe. They can be initialized using `Rc::new()`. To increment the reference, we need to use `Rc::clone(&rc_pointer_variable)`. We can know the current reference count, we can use `Rc::strong_count(&rc_pointer_variable)`
+* **Ref Cell & Interior Mutability:** When a variable (data structure) is externally immutable, but internally (internal items) mutable using the methods implemented inside to change the value.
+* **ARC Smart Pointers: ** are exactly like Rc, but are thread safe.
+**NOTE:** Cyclic references can lead to memory leak. It is a logical bug and must be prevented otherwise it will lead to an orphaned memory on heap.
+
 ## Closures & Iterators (Advance Functions and Closures)
 ## Module System
 * **Workspace:** At top level, we have workspace, which are group of projects which have many dependencies in common. You need to configure workspace by configuring/adding members to workspace section in `cargo toml`
