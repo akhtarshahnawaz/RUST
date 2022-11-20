@@ -272,9 +272,25 @@ fn some_function (t: &(impl Display+Clone), u: &(impl Clone+Debug)) -> (impl Clo
 ```
 
 ## Advance Traits (Associated Types, Operator Overloading & Super Trait)
-* **Associated Types:** are placeholders that you can add to your trait and then methods can use that placeholder. This way, we can define trait for some type which is unknown until implementation. Associated types are different from generics in the sense that generics can have multiple concrete type implementations, whereas associated types have only one.
-The use of "Associated types" improves the overall readability of code by moving inner types locally into a trait as output types. Syntax for the trait definition is as follows:
+* **Associated Types:** are placeholders that you can add to your trait using `type TypeName`, and then methods can use these placeholders. This way, we can define trait for some type which is unknown until implementation. Associated types are different from generics in the sense that generics can have multiple concrete type implementations, whereas associated types have only one. The use of "Associated types" improves the overall readability of code by moving inner types locally into a trait as output types. Syntax for the trait definition is as follows:
 ```rust
+// `A` and `B` are defined in the trait via the `type` keyword. (Note: `type` in this context is different from `type` when used for aliases).
+trait Contains {
+    type A;
+    type B;
+
+    // Updated syntax to refer to these new types generically.
+    fn contains(&self, _: &Self::A, _: &Self::B) -> bool;
+}
+
+// Then when implementing the Trait, we can specify the type
+impl Contains for Container {
+    // Specify what types `A` and `B` are. If the `input` type  is `Container(i32, i32)`, the `output` types are determined as `i32` and `i32`.
+    type A = i32;
+    type B = i32;
+    ...
+ }
+ 
 // Without using associated types
 fn difference<A, B, C>(container: &C) -> i32 where
     C: Contains<A, B> { ... }
