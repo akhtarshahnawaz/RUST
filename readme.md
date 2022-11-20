@@ -322,6 +322,9 @@ Box <dyn TraitName>
 ## Closures & Iterators (Advance Functions and Closures)
 ## Module System
 ## Concurrency
+* Threads can be spawned using `thread.Spawn(||{})` which returns a type on which you can call `.join().unwrap()`. Note that `||{}` is a closure syntax.
+* Channels (to pass data between threads) can be created using MPSC (Multi-Producer Single-Consumer) library, for example `let (tx: , rx: ) = mpsc.channel()`
+* When using `Shared State`, you must use mutex to prevent data race.
 ## Macros (Declarative & Procedural)
 Macros in Rust are provided for meta programming i.e. `(Input is Code) -> `(Output is tranformed Code)`. Some examples of macro in Rust that we use everyday are `println!` and `vec!`
 * **Declarative Macros:** Allows to write something similar to a match expression that operates on provided Rust code.
@@ -332,10 +335,10 @@ macro_rules! some_name{
 }
 ```
 
-+ **Procedural Macro:** Allows to operate on Abstract Syntax Tree of the Rust code it is given. They must be defined in their own crate with custom crate types. They are of 3 types:
- 1. **Custom Derived:** Works also on Functions
- 2. **Attribute Like:** Works only on Structs & ENUMs
- 3. **Function Like:** 
+* **Procedural Macro:** Allows to operate on Abstract Syntax Tree of the Rust code it is given. They must be defined in their own crate with custom crate types. They are of 3 types:
+    1. **Custom Derived:** Works also on Functions
+    2. **Attribute Like:** Works only on Structs & ENUMs
+    3. **Function Like:** 
 
 Here is a very high level syntax:
 ```macro
