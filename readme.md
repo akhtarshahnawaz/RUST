@@ -299,7 +299,14 @@ fn difference<A, B, C>(container: &C) -> i32 where
 fn difference<C: Contains>(container: &C) -> i32 { ... }
 ```
 *  **Operator Overloading:** We can implement `Add` trait `(std::ops::Add)` on some struct to make them addable.
+*  Multiple traits can have same method names implemented for same type. In that case you need to call the specific traits explicitly, for example
+ ```rust
+ \\ On Human type which implements Wizard trait, call fly() method
+ <Human as Wizard>::fly()
+ ```
 
+* **Super Traits:** If your trait depends on implementation of some super trait, you need to specify that when defining trait using e.g. `trait TraitName: SuperTraitName`
+* To implement a trait on some predefined type (say i32), we need to wrap it in a Struct and then implement for that struct
 
 ## Trait Objects
 ## Smart Pointers, Box Smart Pointer (Deref and Drop Traits)
