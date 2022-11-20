@@ -186,7 +186,17 @@ fn plus_one(x: Option<i32>)->Option<i32>{
 }
 ```
 
-## Error Handling
+## Error Handling, `Result` ENUM and `?` syntax for unwrap
+* `panic!("Crash & Burn")` immediately panics and crashes with the given message
+* **Result** ENUM is similar to `Option` ENUM. Just like Option enum returns Some & None, Result enum returns OK or Err
+```rust
+// Behind the scene, result enum is defined like this
+enum Result<T,E>{
+ OK(t),Err(E)
+}
+```
+You can either do `match` on returned results, or you can call `.unwrap()`. Unwrapping will return things from inside `OK` or it will panic in case of `Err`
+* Adding `?` at the end is a shortcut for `unwrap`
 
 ## Generic Types
 ## OOPS, Traits and Impl
