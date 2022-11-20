@@ -264,6 +264,11 @@ fn some_function <T,U>(t: &T, u: &U) -> i32 where T: Display+Clone, U:Clone+Debu
 fn some_function (t: &(impl Display+Clone), u: &(impl Clone+Debug)) -> i32 where T: Display+Clone, U:Clone+Debug{
  ...
 }
+
+// We can also prescribe return value to be of a type that implements specific traits, for instance we can edit about function to return a value to implements Clone trait
+fn some_function (t: &(impl Display+Clone), u: &(impl Clone+Debug)) -> (impl Clone) where T: Display+Clone, U:Clone+Debug{
+ ...
+}
 ```
 
 ## Advance Traits and Types
