@@ -329,7 +329,18 @@ Box <dyn TraitName>
 * **ARC Smart Pointers: ** are exactly like Rc, but are thread safe.
 **NOTE:** Cyclic references can lead to memory leak. It is a logical bug and must be prevented otherwise it will lead to an orphaned memory on heap.
 
-## Closures & Iterators (Advance Functions and Closures)
+## Closures
+* Closures are anonymous functions that can be assigned to variables and passed along to other functions. For example: `let closure = |num|{println!(num)}'
+* We can also cache the value of the closure when called for the first time by using structs:
+```rust
+struct cacher<T> where T:fn(u32)->u32{
+calculation: T,
+value: Option<u32>
+}
+```
+## Iterators 
+* Iterators are used to iterate over iterable types i.e. `.iter()`, `.iter_mut()`, `.into_iter()`,`.next()`,`.iter().map()
+* `map()` has `lazy execution`, so we need to call `collect()` on `map()` to get the output.
 ## Module System
 * **Workspace:** At top level, we have workspace, which are group of projects which have many dependencies in common. You need to configure workspace by configuring/adding members to workspace section in `cargo toml`
 * The structure inside workspace is something like this:
