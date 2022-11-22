@@ -321,6 +321,8 @@ Box <dyn TraitName>
 Vec<Box<dyn Draw>>
 ```
 
+**NOTE:** You might be asking why use trait objects, when you can use generics for same purpose, for example in this case we can pass the type of element that Vec contain. But recognise a crucial difference that a generic can contain only one type of object, however a trait object can be any object that implements that trait i.e. in case of `Draw` trait, it could be a Button, Slider, InputField etc i.e. anything type that implements `Draw` trait 
+
 ## Smart Pointers, Box Smart Pointer (Deref and Drop Traits)
 * **Smart Pointers** are pointers with extra capabilities and metadata than a normal pointer. They are usually implemented using structs, and have `deref` and `drop` traits implemented on them. Smart pointers own the data they refer to, unlike references which only refer to them.
     * **Smart Box Pointer:** Allows to store data on heap, and a pointer to the data on the stack. It is very useful for storing data type for which we don't know size at compile time.
