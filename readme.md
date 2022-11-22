@@ -327,6 +327,12 @@ Vec<Box<dyn Draw>>
 * Static dispatch is when the compiler knows the concrete functions that you are calling at compile time.
 * Dynamic dispatch is when the compiler doen't knows the concrete functions that you are calling at compile time, and instead figures it out at runtime. We use `dyn` keyword in case of trait objects because compiler doesn't know all the concrete types that will be used at compile time, and it figures it out during runtime. Instead the compiler adds code that figures out correct method to call at runtime, and thus have some performance overload, but gain in flexibility.
 
+**NOTE:** You can only make object safe traits into trait bounds. A trait is `Object safe` when all methods implemented on trait have these 2 properties:
+    * Return type isn't self
+    * No generic parameters
+    
+    If a trait doesn't have these two properties, compiler can't figure out concrete types at compile time, adn thus doen't know what methods to call.
+
 ## Smart Pointers, Box Smart Pointer (Deref and Drop Traits)
 * **Smart Pointers** are pointers with extra capabilities and metadata than a normal pointer. They are usually implemented using structs, and have `deref` and `drop` traits implemented on them. Smart pointers own the data they refer to, unlike references which only refer to them.
     * **Smart Box Pointer:** Allows to store data on heap, and a pointer to the data on the stack. It is very useful for storing data type for which we don't know size at compile time.
