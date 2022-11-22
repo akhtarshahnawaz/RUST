@@ -311,10 +311,14 @@ fn difference<C: Contains>(container: &C) -> i32 { ... }
 ## Trait Objects
 Rust doesn't support classic inheritance, but we can achieve same kind of Polymorphism using Trait Objects. For Example, `draw()` method can be inherited to different shapes in GUI librairy of other language by inheritance, but in Rust, it must be done differently because there is no inheritance.
 
-To achieve inheritance in Rust, we use `dyn` keyword (i.e. dynamic dispatch) to use a trait as trait object. A trait object uses anything that implements that trait.
+A trait object can be defined using anything that implements that trait. To define a trait object, we need to wrap it inside some smart pointer like Box, and use `dyn` keyword for dynamic dispactch.
+
 ```rust
 // Dynamic dipatch must be used in Box Smart Pointer
 Box <dyn TraitName>
+
+// Here we define a vector of trait objects i.e. the objects must be implementing Draw Trait
+Vec<Box<dyn Draw>>
 ```
 
 ## Smart Pointers, Box Smart Pointer (Deref and Drop Traits)
