@@ -197,6 +197,7 @@ enum Result<T,E>{
 ```
 You can either do `match` on returned results, or you can call `.unwrap()`. Unwrapping will return things from inside `OK` or it will panic in case of `Err`
 * Adding `?` at the end is a shortcut for `unwrap`
+* There is also a `.expect()` method which is a shortcut for `.unwrap_or_panic_with_this_message()` in Rust.
 
 ## Generic Types
 Generic type allows you to create functions that can use any datatypes as argument.
